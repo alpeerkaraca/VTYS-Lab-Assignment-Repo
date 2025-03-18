@@ -1,0 +1,2 @@
+# VTYS Laboratuvarı Ödev Reposu
+Bu repo içerisinde Ondokuz Mayıs Üniversitesi Bilgisayar Mühendisliği Bölümü  "BİL488 Veri Tabanı Laboratuvarı" dersi kapsamında istenen ödev kaynak kodları bulunmaktadır.
