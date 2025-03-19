@@ -1,2 +1,2 @@
 -- “Yazýlým” veya “Donaným” birimlerinde çalýþanlarýn ad, soyad ve maaþ bilgilerini listeleyen SQL sorgusunu yazýnýz. (Tek bir sorgu ile)
-SELECT ad, soyad, maas FROM birimler JOIN calisanlar on birimler.birim_id= calisanlar.calisan_birim_id;
+SELECT ad, soyad, maas FROM birimler JOIN calisanlar ON birimler.birim_id= calisanlar.calisan_birim_id WHERE birim_ad IN ('Yazýlým', 'Donaným');
