@@ -1,0 +1,1 @@
+SELECT Customers.ContactName, Customers.Address FROM Customers JOIN Orders ON Customers.CustomerID = Orders.CustomerID JOIN Shippers ON Orders.ShipVia = Shippers.ShipperID WHERE Shippers.CompanyName = 'Speedy Express'

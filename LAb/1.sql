@@ -1,0 +1,1 @@
+SELECT Suppliers.CompanyName, Suppliers.City, Suppliers.Country, Suppliers.PostalCode FROM dbo.Suppliers WHERE Suppliers.Address LIKE '%rue%'  ORDER BY Suppliers.CompanyName

@@ -1,0 +1,1 @@
+UPDATE Shippers SET CompanyName = 'Amazon Prime Shipping' WHERE Shippers.CompanyName = 'Speedy Express'
