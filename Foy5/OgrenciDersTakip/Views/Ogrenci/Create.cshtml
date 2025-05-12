@@ -1,0 +1,63 @@
+@model OgrenciDersTakip.Models.TOgrenci
+@{
+    ViewData["Title"] = "Yeni Öğrenci Ekle";
+    var bolumler = ViewBag.Bolumler as List<OgrenciDersTakip.Models.TBolum>;
+}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Yeni Öğrenci Ekle</h3>
+                </div>
+                <div class="card-body">
+                    @if (ViewBag.Errors != null)
+                    {
+                        <ul>
+                            @foreach (var err in ViewBag.Errors)
+                            {
+                                <li style="color:red">@err</li>
+                            }
+                        </ul>
+                    }
+                    <form asp-action="Create" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label">Öğrenci No</label>
+                            <input asp-for="OgrenciNo" class="form-control" required />
+                            <span asp-validation-for="OgrenciNo" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Ad</label>
+                            <input asp-for="Ad" class="form-control" required />
+                            <span asp-validation-for="Ad" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Soyad</label>
+                            <input asp-for="Soyad" class="form-control" required />
+                            <span asp-validation-for="Soyad" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Bölüm</label>
+                            <select asp-for="BolumID" class="form-select" required>
+                                <option value="">Seçiniz</option>
+                                @if (bolumler != null)
+                                {
+                                    foreach (var bolum in bolumler)
+                                    {
+                                        <option value="@bolum.BolumID">@bolum.BolumAd</option>
+                                    }
+                                }
+                            </select>
+                            <span asp-validation-for="BolumID" class="text-danger"></span>
+                        </div>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Kaydet</button>
+                            <a asp-action="Index" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Geri</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

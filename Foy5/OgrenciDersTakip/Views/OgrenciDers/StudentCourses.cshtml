@@ -1,0 +1,29 @@
+@model IEnumerable<OgrenciDersTakip.Models.TOgrenciDers>
+@{
+    ViewData["Title"] = "Öğrencinin Aldığı Dersler";
+    var ogrenci = ViewBag.Ogrenci as OgrenciDersTakip.Models.TOgrenci;
+}
+<h2>@ogrenci.Ad @ogrenci.Soyad - Aldığı Dersler</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ders</th>
+            <th>Yıl</th>
+            <th>Yarıyıl</th>
+            <th>Vize</th>
+            <th>Final</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Ders?.DersAd</td>
+            <td>@item.Yil</td>
+            <td>@item.Yariyil</td>
+            <td>@item.Vize</td>
+            <td>@item.Final</td>
+        </tr>
+    }
+    </tbody>
+</table>

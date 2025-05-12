@@ -1,0 +1,15 @@
+@model OgrenciDersTakip.Models.TFakulte
+@{
+    ViewData["Title"] = "Fakülte Düzenle";
+}
+<h2>Fakülte Düzenle</h2>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="FakulteID" />
+    <div class="form-group mb-3">
+        <label>Fakülte Adı</label>
+        <input asp-for="FakulteAd" class="form-control" />
+        <span asp-validation-for="FakulteAd" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Kaydet</button>
+    <a asp-action="Index" class="btn btn-secondary">Geri</a>
+</form>

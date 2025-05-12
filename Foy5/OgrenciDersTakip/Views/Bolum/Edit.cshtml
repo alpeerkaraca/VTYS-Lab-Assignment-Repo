@@ -1,0 +1,21 @@
+@model OgrenciDersTakip.Models.TBolum
+@{
+    ViewData["Title"] = "Bölüm Düzenle";
+    var fakulteler = ViewBag.Fakulteler as List<OgrenciDersTakip.Models.TFakulte>;
+}
+<h2>Bölüm Düzenle</h2>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="BolumID" />
+    <div class="form-group">
+        <label>Bölüm Adı</label>
+        <input asp-for="BolumAd" class="form-control" />
+        <span asp-validation-for="BolumAd" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-3">
+        <label>Fakülte</label>
+        <select asp-for="FakulteID" class="form-control" asp-items="@(new SelectList(fakulteler, "FakulteID", "FakulteAd", Model.FakulteID))"></select>
+        <span asp-validation-for="FakulteID" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Kaydet</button>
+    <a asp-action="Index" class="btn btn-secondary">Geri</a>
+</form>

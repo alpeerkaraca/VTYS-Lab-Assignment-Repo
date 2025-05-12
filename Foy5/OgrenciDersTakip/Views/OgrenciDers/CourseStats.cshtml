@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Yıl/Yarıyıla Göre Ders Seçim İstatistiği";
+    var stats = Model as IEnumerable<dynamic>;
+}
+<h2>@ViewBag.Yil @ViewBag.Yariyil Dönemi - Ders Seçim İstatistiği</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ders</th>
+            <th>Seçen Öğrenci Sayısı</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in stats)
+    {
+        <tr>
+            <td>@item.DersAd</td>
+            <td>@item.OgrenciSayisi</td>
+        </tr>
+    }
+    </tbody>
+</table>

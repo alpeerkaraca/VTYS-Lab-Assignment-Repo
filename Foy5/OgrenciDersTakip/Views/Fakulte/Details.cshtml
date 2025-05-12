@@ -1,0 +1,13 @@
+@model OgrenciDersTakip.Models.TFakulte
+@{
+    ViewData["Title"] = "Fakülte Detay";
+}
+<h2>Fakülte Detay</h2>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Fakülte Adı</dt>
+        <dd class="col-sm-10">@Model.FakulteAd</dd>
+    </dl>
+    <a asp-action="Edit" asp-route-id="@Model.FakulteID" class="btn btn-primary">Düzenle</a>
+    <a asp-action="Index" class="btn btn-secondary">Geri</a>
+</div>

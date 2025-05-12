@@ -1,0 +1,17 @@
+@model OgrenciDersTakip.Models.TFakulte
+@{
+    ViewData["Title"] = "Fakülte Sil";
+}
+<h2>Fakülte Sil</h2>
+<h4>Bu fakülteyi silmek istediğinize emin misiniz?</h4>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Fakülte Adı</dt>
+        <dd class="col-sm-10">@Model.FakulteAd</dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="FakulteID" />
+        <button type="submit" class="btn btn-danger">Sil</button>
+        <a asp-action="Index" class="btn btn-secondary">Geri</a>
+    </form>
+</div>

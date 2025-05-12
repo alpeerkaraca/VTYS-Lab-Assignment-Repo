@@ -1,0 +1,35 @@
+@model IEnumerable<dynamic>
+@{
+    ViewData["Title"] = "Ders Seçim İstatistikleri Sonuç";
+}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4>Ders Seçim İstatistikleri Sonuç</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Ders Adı</th>
+                                <th>Öğrenci Sayısı</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.DersAd</td>
+                                <td>@item.OgrenciSayisi</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                    <a asp-action="CourseStatsForm" class="btn btn-secondary mt-3"><i class="bi bi-arrow-left"></i> Geri</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

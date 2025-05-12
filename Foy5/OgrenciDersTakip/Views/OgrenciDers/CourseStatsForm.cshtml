@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Ders Seçim İstatistikleri";
+}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4>Ders Seçim İstatistikleri</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="CourseStatsResult" method="post" class="mb-4">
+                        <div class="row g-2 align-items-end">
+                            <div class="col-md-5">
+                                <label class="form-label">Yıl</label>
+                                <input type="number" name="yil" class="form-control" placeholder="2024" required />
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label">Yarıyıl</label>
+                                <select name="yariyil" class="form-select" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="Güz">Güz</option>
+                                    <option value="Bahar">Bahar</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary w-100"><i class="bi bi-search"></i> Göster</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

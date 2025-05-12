@@ -1,0 +1,15 @@
+@model OgrenciDersTakip.Models.TBolum
+@{
+    ViewData["Title"] = "Bölüm Detay";
+}
+<h2>Bölüm Detay</h2>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Bölüm Adı</dt>
+        <dd class="col-sm-10">@Model.BolumAd</dd>
+        <dt class="col-sm-2">Fakülte</dt>
+        <dd class="col-sm-10">@Model.Fakulte?.FakulteAd</dd>
+    </dl>
+    <a asp-action="Edit" asp-route-id="@Model.BolumID" class="btn btn-primary">Düzenle</a>
+    <a asp-action="Index" class="btn btn-secondary">Geri</a>
+</div>

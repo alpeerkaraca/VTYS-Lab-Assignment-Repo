@@ -1,0 +1,31 @@
+@model IEnumerable<OgrenciDersTakip.Models.TOgrenciDers>
+@{
+    ViewData["Title"] = "Dersi Alan Öğrenciler";
+    var ders = ViewBag.Ders as OgrenciDersTakip.Models.TDers;
+}
+<h2>@ders.DersAd - Dersi Alan Öğrenciler</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Öğrenci</th>
+            <th>Yıl</th>
+            <th>Yarıyıl</th>
+            <th>Vize</th>
+            <th>Final</th>
+            <th>Not Gir</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Ogrenci?.Ad @item.Ogrenci?.Soyad</td>
+            <td>@item.Yil</td>
+            <td>@item.Yariyil</td>
+            <td>@item.Vize</td>
+            <td>@item.Final</td>
+            <td><a asp-action="GradeEntry" asp-route-id="@item.OgrenciDersID">Not Gir</a></td>
+        </tr>
+    }
+    </tbody>
+</table>

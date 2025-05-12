@@ -1,0 +1,55 @@
+@{
+    ViewData["Title"] = "Öğrenciye Göre Dersler";
+}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4>Öğrenciye Göre Dersler</h4>
+                </div>
+                <div class="card-body">
+                    <form method="get" class="mb-4">
+                        <div class="input-group">
+                            <input type="text" name="ogrenciNo" class="form-control" placeholder="Öğrenci Numarası" value="@(Context.Request.Query["ogrenciNo"])" required />
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Listele</button>
+                        </div>
+                    </form>
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger">@ViewBag.Error</div>
+                    }
+                    @if (ViewBag.Ogrenci != null)
+                    {
+                        <div class="mb-3">
+                            <strong>@ViewBag.Ogrenci.Ad @ViewBag.Ogrenci.Soyad</strong> (@ViewBag.Ogrenci.OgrenciNo)
+                        </div>
+                    }
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Ders Adı</th>
+                                <th>Yıl</th>
+                                <th>Yarıyıl</th>
+                                <th>Vize</th>
+                                <th>Final</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Ders?.DersAd</td>
+                                <td>@item.Yil</td>
+                                <td>@item.Yariyil</td>
+                                <td>@item.Vize</td>
+                                <td>@item.Final</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

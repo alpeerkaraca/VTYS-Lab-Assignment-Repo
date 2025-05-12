@@ -1,0 +1,73 @@
+@model OgrenciDersTakip.Models.TOgrenciDers
+@{
+    ViewData["Title"] = "Ders Atama";
+    var ogrenciler = ViewBag.Ogrenciler as List<OgrenciDersTakip.Models.TOgrenci>;
+    var dersler = ViewBag.Dersler as List<OgrenciDersTakip.Models.TDers>;
+}
+<h2>Ders Atama</h2>
+@if (ViewBag.Errors != null)
+{
+    <ul>
+        @foreach (var err in ViewBag.Errors)
+        {
+            <li style="color:red">@err</li>
+        }
+    </ul>
+}
+<form asp-action="Assign" method="get">
+    <div class="form-group">
+        <label>Öğrenci</label>
+        <select name="ogrenciId" class="form-control" onchange="this.form.submit()">
+            <option value="">Seçiniz</option>
+            @if (ogrenciler != null)
+            {
+                foreach (var ogr in ogrenciler)
+                {
+                    // var selected = Model.OgrenciID == ogr.OgrenciID ? "selected" : ""; // Bu satıra gerek yok
+                    <option value="@ogr.OgrenciID" selected="@(Model.OgrenciID == ogr.OgrenciID)">
+                        @ogr.Ad @ogr.Soyad (@ogr.Bolum?.BolumAd)
+                    </option>
+                }
+            }
+        </select>
+    </div>
+</form>
+
+@if (Model.OgrenciID >= 0)
+{
+    <form asp-action="Assign" method="post">
+        <input type="hidden" asp-for="OgrenciID" />
+        <div class="form-group">
+            <label>Ders</label>
+            <select asp-for="DersID" class="form-control">
+                <option value="">Seçiniz</option>
+                @if (dersler != null)
+                {
+                    foreach (var ders in dersler)
+                    {
+                        <option value="@ders.DersID">@ders.DersAd</option>
+                    }
+                }
+            </select>
+            <span asp-validation-for="DersID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Yıl</label>
+            <input asp-for="Yil" class="form-control" />
+            <span asp-validation-for="Yil" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Yarıyıl</label>
+            <select asp-for="Yariyil" class="form-control">
+                <option value="">Seçiniz</option>
+                <option value="Güz">Güz</option>
+                <option value="Bahar">Bahar</option>
+            </select>
+            <span asp-validation-for="Yariyil" class="text-danger"></span>
+        </div>
+        <div class="d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Kaydet</button>
+            <a asp-action="List" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Geri</a>
+        </div>
+    </form>
+}

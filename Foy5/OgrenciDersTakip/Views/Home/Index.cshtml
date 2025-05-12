@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "İşlemler";
+}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">Hoşgeldiniz</h3>
+                </div>
+                <div class="card-body">
+                    <p class="lead">Aşağıdaki işlemleri hızlıca başlatabilirsiniz:</p>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <a class="btn btn-outline-primary w-100 py-3" asp-controller="Ogrenci" asp-action="Index"><i class="bi bi-person"></i> Öğrenci İşlemleri</a>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="btn btn-outline-success w-100 py-3" asp-controller="Bolum" asp-action="Index"><i class="bi bi-diagram-3"></i> Bölüm İşlemleri</a>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="btn btn-outline-warning w-100 py-3" asp-controller="Fakulte" asp-action="Index"><i class="bi bi-building"></i> Fakülte İşlemleri</a>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="btn btn-outline-info w-100 py-3" asp-controller="Ders" asp-action="Index"><i class="bi bi-journal-bookmark"></i> Ders İşlemleri</a>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="btn btn-outline-secondary w-100 py-3" asp-controller="OgrenciDers" asp-action="List"><i class="bi bi-list-check"></i> Ders Atama & Not</a>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="btn btn-outline-dark w-100 py-3" asp-controller="OgrenciDers" asp-action="Assign"><i class="bi bi-plus-circle"></i> Ders Atama</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a class="btn btn-outline-primary w-100 py-3" asp-controller="OgrenciDers" asp-action="StudentCoursesByNo"><i class="bi bi-search"></i> Öğrenci No ile Ders Listesi</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a class="btn btn-outline-info w-100 py-3" asp-controller="OgrenciDers" asp-action="CourseStatsForm"><i class="bi bi-bar-chart"></i> Yıl/Yarıyıl Ders İstatistikleri</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+@model OgrenciDersTakip.Models.TFakulte
+@{
+    ViewData["Title"] = "Yeni Fakülte Ekle";
+}
+<h2>Yeni Fakülte Ekle</h2>
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<form asp-action="Create">
+    <div class="form-group">
+        <label>Fakülte Adı</label>
+        <input asp-for="FakulteAd" class="form-control" />
+        <span asp-validation-for="FakulteAd" class="text-danger"></span>
+    </div>
+    <div class="d-flex justify-content-between mt-4">
+        <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Kaydet</button>
+        <a asp-action="Index" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Geri</a>
+    </div>
+</form>

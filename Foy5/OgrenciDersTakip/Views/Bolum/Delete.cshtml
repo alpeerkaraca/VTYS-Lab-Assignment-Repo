@@ -1,0 +1,19 @@
+@model OgrenciDersTakip.Models.TBolum
+@{
+    ViewData["Title"] = "Bölüm Sil";
+}
+<h2>Bölüm Sil</h2>
+<h4>Bu bölümü silmek istediğinize emin misiniz?</h4>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Bölüm Adı</dt>
+        <dd class="col-sm-10">@Model.BolumAd</dd>
+        <dt class="col-sm-2">Fakülte</dt>
+        <dd class="col-sm-10">@Model.Fakulte?.FakulteAd</dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="BolumID" />
+        <button type="submit" class="btn btn-danger">Sil</button>
+        <a asp-action="Index" class="btn btn-secondary">Geri</a>
+    </form>
+</div>

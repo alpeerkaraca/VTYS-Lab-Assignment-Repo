@@ -1,0 +1,23 @@
+@model OgrenciDersTakip.Models.TOgrenciDers
+@{
+    ViewData["Title"] = "Ders Atama Sil";
+}
+<h2>Ders Atama Sil</h2>
+<h4>Bu atamayı silmek istediğinize emin misiniz?</h4>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Öğrenci</dt>
+        <dd class="col-sm-10">@Model.Ogrenci?.Ad @Model.Ogrenci?.Soyad</dd>
+        <dt class="col-sm-2">Ders</dt>
+        <dd class="col-sm-10">@Model.Ders?.DersAd</dd>
+        <dt class="col-sm-2">Yıl</dt>
+        <dd class="col-sm-10">@Model.Yil</dd>
+        <dt class="col-sm-2">Yarıyıl</dt>
+        <dd class="col-sm-10">@Model.Yariyil</dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="OgrenciDersID" />
+        <button type="submit" class="btn btn-danger">Sil</button>
+        <a asp-action="List" class="btn btn-secondary">Geri</a>
+    </form>
+</div>

@@ -1,0 +1,41 @@
+@model OgrenciDersTakip.Models.TOgrenciDers
+@{
+    ViewData["Title"] = "Not Girişi";
+}
+<h2>Not Girişi</h2>
+@if (ViewBag.Errors != null)
+{
+    <ul>
+    @foreach (var err in ViewBag.Errors)
+    {
+        <li style="color:red">@err</li>
+    }
+    </ul>
+}
+<form asp-action="GradeEntry">
+    <input type="hidden" asp-for="OgrenciDersID" />
+    <input type="hidden" asp-for="OgrenciID" />
+    <input type="hidden" asp-for="DersID" />
+    <input type="hidden" asp-for="Yariyil" />
+    <input type="hidden" asp-for="Yil" />
+    <div class="form-group">
+        <label>Öğrenci</label>
+        <input class="form-control" value="@Model.Ogrenci?.Ad @Model.Ogrenci?.Soyad" readonly />
+    </div>
+    <div class="form-group">
+        <label>Ders</label>
+        <input class="form-control" value="@Model.Ders?.DersAd" readonly />
+    </div>
+    <div class="form-group">
+        <label>Vize</label>
+        <input asp-for="Vize" class="form-control" />
+        <span asp-validation-for="Vize" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Final</label>
+        <input asp-for="Final" class="form-control" />
+        <span asp-validation-for="Final" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Kaydet</button>
+    <a asp-action="List" class="btn btn-secondary">Geri</a>
+</form>

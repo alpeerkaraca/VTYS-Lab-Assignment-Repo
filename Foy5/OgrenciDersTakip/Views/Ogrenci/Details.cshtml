@@ -1,0 +1,19 @@
+@model OgrenciDersTakip.Models.TOgrenci
+@{
+    ViewData["Title"] = "Öğrenci Detay";
+}
+<h2>Öğrenci Detay</h2>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Ad</dt>
+        <dd class="col-sm-10">@Model.Ad</dd>
+        <dt class="col-sm-2">Soyad</dt>
+        <dd class="col-sm-10">@Model.Soyad</dd>
+        <dt class="col-sm-2">Bölüm</dt>
+        <dd class="col-sm-10">@Model.Bolum?.BolumAd</dd>
+        <dt class="col-sm-2">Öğrenci No</dt>
+        <dd class="col-sm-10">@Model.OgrenciNo</dd>
+    </dl>
+    <a asp-action="Edit" asp-route-id="@Model.OgrenciID" class="btn btn-primary">Düzenle</a>
+    <a asp-action="Index" class="btn btn-secondary">Geri</a>
+</div>

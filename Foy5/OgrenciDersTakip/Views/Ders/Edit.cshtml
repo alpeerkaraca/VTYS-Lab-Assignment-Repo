@@ -1,0 +1,32 @@
+@model OgrenciDersTakip.Models.TDers
+@{
+    ViewData["Title"] = "Ders Düzenle";
+    var bolumler = ViewBag.Bolumler as List<OgrenciDersTakip.Models.TBolum>;
+}
+<h2>Ders Düzenle</h2>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="DersID" />
+    <div class="form-group mb-4">
+        <label>Ders Adı</label>
+        <input asp-for="DersAd" class="form-control" />
+        <span asp-validation-for="DersAd" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-4">
+        <label>Bölüm</label>
+<select asp-for="BolumID" class="form-control">
+    <option value="">Seçiniz</option>
+    @if (bolumler != null)
+    {
+        foreach (var bolum in bolumler)
+        {
+            <option value="@bolum.BolumID" selected="@(bolum.BolumID == Model.BolumID ? "selected" : null)">
+                @bolum.BolumAd
+            </option>
+        }
+    }
+</select>
+        <span asp-validation-for="BolumID" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Kaydet</button>
+    <a asp-action="Index" class="btn btn-secondary">Geri</a>
+</form>

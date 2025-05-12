@@ -1,0 +1,40 @@
+@model OgrenciDersTakip.Models.TBolum
+@{
+    ViewData["Title"] = "Yeni Bölüm Ekle";
+    var fakulteler = ViewBag.Fakulteler as List<OgrenciDersTakip.Models.TFakulte>;
+}
+<h2>Yeni Bölüm Ekle</h2>
+@if (ViewBag.Errors != null)
+{
+    <ul>
+    @foreach (var err in ViewBag.Errors)
+    {
+        <li style="color:red">@err</li>
+    }
+    </ul>
+}
+<form asp-action="Create">
+    <div class="form-group">
+        <label>Bölüm Adı</label>
+        <input asp-for="BolumAd" class="form-control" />
+        <span asp-validation-for="BolumAd" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Fakülte</label>
+        <select asp-for="FakulteID" class="form-control">
+            <option value="">Seçiniz</option>
+            @if (fakulteler != null)
+            {
+                foreach (var fakulte in fakulteler)
+                {
+                    <option value="@fakulte.FakulteID">@fakulte.FakulteAd</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="FakulteID" class="text-danger"></span>
+    </div>
+    <div class="d-flex justify-content-between mt-4">
+        <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Kaydet</button>
+        <a asp-action="Index" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Geri</a>
+    </div>
+</form>

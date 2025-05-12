@@ -1,0 +1,40 @@
+@model OgrenciDersTakip.Models.TDers
+@{
+    ViewData["Title"] = "Yeni Ders Ekle";
+    var bolumler = ViewBag.Bolumler as List<OgrenciDersTakip.Models.TBolum>;
+}
+<h2>Yeni Ders Ekle</h2>
+@if (ViewBag.Errors != null)
+{
+    <ul>
+    @foreach (var err in ViewBag.Errors)
+    {
+        <li style="color:red">@err</li>
+    }
+    </ul>
+}
+<form asp-action="Create">
+    <div class="form-group">
+        <label>Ders Adı</label>
+        <input asp-for="DersAd" class="form-control" />
+        <span asp-validation-for="DersAd" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Bölüm</label>
+        <select asp-for="BolumID" class="form-control">
+            <option value="">Seçiniz</option>
+            @if (bolumler != null)
+            {
+                foreach (var bolum in bolumler)
+                {
+                    <option value="@bolum.BolumID">@bolum.BolumAd</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="BolumID" class="text-danger"></span>
+    </div>
+    <div class="d-flex justify-content-between mt-4">
+        <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Kaydet</button>
+        <a asp-action="Index" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Geri</a>
+    </div>
+</form>
