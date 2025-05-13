@@ -23,7 +23,7 @@ namespace OgrenciDersTakip.Controllers
             {
                 var ogrenci = ogrenciler.FirstOrDefault(o => o.OgrenciID == ogrenciId.Value);
                 dersler = ogrenci != null && ogrenci.Bolum != null // Öğrencinin bölümü olduğundan emin olun
-                    ? _context.Dersler.Where(d => d.BolumID == ogrenci.BolumID).ToList() // BolumID ile karşılaştırın
+                    ? _context.Dersler.Where(d => d.BolumID == ogrenci.BolumID).OrderBy(d => d.DersAd).ToList() // BolumID ile karşılaştırın
                     : new List<TDers>();
             }
             else
@@ -33,6 +33,7 @@ namespace OgrenciDersTakip.Controllers
             ViewBag.Dersler = dersler;
 
             var model = new TOgrenciDers { OgrenciID = ogrenciId ?? 0 };
+            model.Yil = DateTime.Now.Year;
             return View(model);
         }
 

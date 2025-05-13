@@ -51,3 +51,5 @@ Thumbs.db
 OgrenciDersTakip/.idea/
 
 Migrations/
+*.dll
+appsettings.json
